@@ -1,0 +1,65 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Install dependencies frontend",
+      "type": "npm",
+      "script": "install",
+      "path": "frontend/"
+    },
+    {
+      "label": "Install dependencies backend",
+      "type": "shell",
+      "command": "pip",
+      "args": ["install", "-r", "backend/requirements.txt"]
+    },
+    {
+      "label": "Publish frontend",
+      "type": "npm",
+      "script": "publish",
+      "path": "frontend/"
+    },
+    {
+      "label": "Publish backend",
+      "type": "shell",
+      "command": "python",
+      "args": ["backend/scripts/publish.py"]
+    },
+    {
+      "label": "Start frontend",
+      "type": "npm",
+      "script": "start",
+      "path": "frontend/"
+    },
+    {
+      "label": "Start backend",
+      "type": "shell",
+      "command": "cd backend && flask run -p 3001"
+    },
+    {
+      "label": "Install dependencies",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Install dependencies frontend",
+        "Install dependencies backend"
+      ]
+    },
+    {
+      "label": "Publish",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Publish frontend",
+        "Publish backend"
+      ]
+    },
+    {
+      "label": "Start App",
+      "dependsOn": [
+        "Start backend",
+        "Start frontend"
+      ]
+    }
+  ]
+}

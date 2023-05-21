@@ -1,0 +1,10 @@
+{
+  "rules": {
+    "posts": {
+      ".indexOn": ["title", "content"]
+    },
+    "users": {
+      ".indexOn": ["name", "email"]
+    }
+  }
+}

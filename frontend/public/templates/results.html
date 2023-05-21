@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    {% if movies %}
+        <ul>
+            {% for movie in movies %}
+                <li>{{ movie.title }} ({{ movie.release_year }})</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No movies found</p>
+    {% endif %}
+</body>
+</html>
+
